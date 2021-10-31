@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punk Display</title>
+    <style>
+        body {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(306deg, rgba(255, 0, 232, 1) 0%, rgba(0, 121, 255, 1) 100%);
+            background-size: 250% 250%;
+            /* background: linear-gradient(306deg, rgba(0, 138, 255, 1) 0%, rgba(255, 0, 230, 1) 100%); */
+            /* https://cssgradient.io/ */
+            margin: 0;
+            padding: 0;
+            animation: gradient 5s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        .center {
+            position: relative;
+            margin: 0 auto;
+            width: fit-content;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .punk {
+            position: relative;
+            width: fit-content;
+            margin-bottom: -2%;
+        }
+
+        #punk {
+            position: relative;
+            top: 0;
+            z-index: 1;
+            /* filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.65)); */
+        }
+
+        .black {
+            z-index: 2;
+            position: absolute;
+            top: 1%;
+        }
+
+        #left-b {
+            left: 0;
+            top: 0;
+            opacity: 1;
+            animation: 30s ease-in-out alternate-reverse infinite fade;
+            /* Both animations need to be same seconds */
+        }
+
+        #right-b {
+            top: 0;
+            right: 0;
+            animation: 30s ease-in-out alternate infinite fade;
+            /* Both animations need to be same seconds */
+        }
+
+        @keyframes fade {
+            0% {
+                opacity: 1;
+            }
+
+            45% {
+                opacity: 1;
+            }
+
+            55% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <div class="punk">
+            <img id="left-b" class="black" src="./img/punk/left.png" alt="">
+            <img id="right-b" class="black" src="./img/punk/right.png" alt="">
+            <img id="punk" src="./img/punk/punk.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

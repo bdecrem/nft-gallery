@@ -49,7 +49,7 @@ function popUpLeftScreen(duration) {
 		} else {
 			if (randomChance(33) && !punkShowingAtBottom && !punkShowingAtRight) {
 				leftPosition = -((punk.width/2)+8);
-				punk.style.top = Math.floor(Math.random() * 90) + "vh";
+				punk.style.top = 50 + Math.floor(Math.random() * 40) + "vh";
 				translateForSide(-punk.width, leftPosition, false);
 				punkShowingAtLeft = true;
 			}
@@ -67,7 +67,7 @@ function popUpRightScreen(duration) {
 		} else {
 			if (randomChance(33) && !punkShowingAtBottom && !punkShowingAtLeft) {
 				leftPosition = window.innerWidth - (punk.width/2);
-				punk.style.top = Math.floor(Math.random() * 90) + "vh";
+				punk.style.top = 50 + Math.floor(Math.random() * 40) + "vh";
 				translateForSide(window.innerWidth, leftPosition, false);
 				punkShowingAtRight = true;
 			}

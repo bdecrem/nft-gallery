@@ -42,8 +42,8 @@
         img {
 			transition: all 5s;
 			position: absolute;
-			top: -2000px;
-			left: -2000px;
+			top: 0px;
+			left: 0px;
         }
     </style>
 </head>
@@ -56,11 +56,11 @@
 	var highestTime = 22;
 	//set minimum size - E.G - 3500px and maximum size E.G. 4000px
 	//The higher the number, the more zoomed in the image will be
-	var minimumSize = 3000;
-	var maximumSize = 4000; 
+	var minimumSize = 2000;
+	var maximumSize = 2500; 
 		
 	//image size - 4000px
-	var imageSize = 4000;
+	var imageSize = 2500;
 		
 	//max distance in pixels to travel
 	var maxDistance = 100;	
@@ -72,8 +72,8 @@
 	intervalId = setInterval(function() {
  		moveJank();
   	}, 100);
-	jenk.style.top = -(imageSize/2)+'px';
-	jenk.style.left = -(imageSize/2)+'px';
+	jenk.style.top = '0px';
+	jenk.style.left = '0px';
 		
 	function startInterval() {
   		// Store the id of the interval so we can clear it later
@@ -100,6 +100,13 @@
 			y = Math.abs(parseInt(jenk.style.left))+maxDistance;
 		} else if (-y > parseInt(jenk.style.left)-maxDistance) {
 			y = Math.abs(parseInt(jenk.style.left))-maxDistance;
+		}
+		
+		if (x+randomSize < window.innerHeight) {
+			x = window.innerHeight-randomSize;
+		}
+		if (y+randomSize < window.innerHeight) {
+			y = window.innerWidth-randomSize;
 		}
 		
 		jenk.style.top = -x + 'px';

@@ -40,15 +40,86 @@
         }
 
         img {
-            width: 105vw;
-            object-fit: cover;
-            object-position: center;
+			transition: all 5s;
+			position: absolute;
+			top: -2000px;
+			left: -2000px;
         }
     </style>
 </head>
 
 <body>
-    <img src="./img/jenkclub.png" alt="">
+    <img src="./img/jenkclub.png" alt="" id="jenk">
+	<script language="javascript">
+	//Set random timer for movement between 15 and 22	
+	var lowestTime = 15;
+	var highestTime = 22;
+	//set minimum size - E.G - 3500px and maximum size E.G. 4000px
+	//The higher the number, the more zoomed in the image will be
+	var minimumSize = 3000;
+	var maximumSize = 4000; 
+		
+	//image size - 4000px
+	var imageSize = 4000;
+		
+	//max distance in pixels to travel
+	var maxDistance = 100;	
+	
+	var sizeBetween = maximumSize-minimumSize;
+	var timer = 10;
+	var intervalId;
+	const jenk = document.getElementById('jenk');
+	intervalId = setInterval(function() {
+ 		moveJank();
+  	}, 100);
+	jenk.style.top = -(imageSize/2)+'px';
+	jenk.style.left = -(imageSize/2)+'px';
+		
+	function startInterval() {
+  		// Store the id of the interval so we can clear it later
+		intervalId = setInterval(function() {
+ 			moveJank();
+  		}, timer * 1000);
+	}
+		
+	function moveJank() {
+		var randomSize = minimumSize + Math.floor(Math.random()*sizeBetween);
+		var size = sizeBetween + randomSize;
+		
+		var x = Math.floor(Math.random()*((size)-window.innerHeight));
+		var y = Math.floor(Math.random()*((size)-window.innerWidth));
+		
+		if (-x < parseInt(jenk.style.top)+maxDistance) {
+			x = Math.abs(parseInt(jenk.style.top))+maxDistance;
+			console.log(x);
+		} else if (-x > parseInt(jenk.style.top)-maxDistance) {
+			x = Math.abs(parseInt(jenk.style.top))-maxDistance;
+			console.log("otherway: "+ x);
+		}
+		if (-y < parseInt(jenk.style.left)+maxDistance) {
+			y = Math.abs(parseInt(jenk.style.left))+maxDistance;
+		} else if (-y > parseInt(jenk.style.left)-maxDistance) {
+			y = Math.abs(parseInt(jenk.style.left))-maxDistance;
+		}
+		
+		jenk.style.top = -x + 'px';
+		jenk.style.left = -y + 'px';
+		jenk.style.width = size + 'px';
+		
+		timer = randomizer(lowestTime, highestTime);
+		jenk.style.transition = "all " + timer + "s";
+		
+		// clear the interval
+  		clearInterval(intervalId);
+		// and start a new one
+		startInterval();
+	}
+		
+	function randomizer(min,max) {
+    	randomresult = Math.random() * (max - min) + min;
+    	return randomresult;
+	}
+	</script>
 </body>
 
 </html>

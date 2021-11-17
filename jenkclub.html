@@ -42,8 +42,6 @@
         img {
 			transition: all 5s;
 			position: absolute;
-			top: 0px;
-			left: 0px;
         }
     </style>
 </head>
@@ -52,15 +50,15 @@
     <img src="./img/jenkclub.png" alt="" id="jenk">
 	<script language="javascript">
 	//Set random timer for movement between 15 and 22	
-	var lowestTime = 18;
+	var lowestTime = 15;
 	var highestTime = 22;
 	//set minimum size - E.G - 3500px and maximum size E.G. 4000px
 	//The higher the number, the more zoomed in the image will be
-	var minimumSize = 1200;
-	var maximumSize = 1400; 
+	var minimumSize = 2000;
+	var maximumSize = 2400; 
 		
 	//image size - 4000px
-	var imageSize = 1400;
+	var imageSize = 4000;
 		
 	//max distance in pixels to travel
 	var maxDistance = 50;	
@@ -72,8 +70,6 @@
 	intervalId = setInterval(function() {
  		moveJank();
   	}, 100);
-	jenk.style.top = '0px';
-	jenk.style.left = '0px';
 		
 	function startInterval() {
   		// Store the id of the interval so we can clear it later
@@ -84,29 +80,27 @@
 		
 	function moveJank() {
 		var randomSize = minimumSize + Math.floor(Math.random()*sizeBetween);
-		var size = sizeBetween + randomSize;
+		var size = randomSize;
 		
-		var x = Math.floor(Math.random()*((size)-window.innerHeight));
-		var y = Math.floor(Math.random()*((size)-window.innerWidth));
+		var x = Math.floor(Math.random()*(size-(window.innerHeight+100)));
+		var y = Math.floor(Math.random()*(size-(window.innerWidth+100)));
 		
-		if (-x < parseInt(jenk.style.top)+maxDistance) {
-			x = Math.abs(parseInt(jenk.style.top))+maxDistance;
-			console.log(x);
-		} else if (-x > parseInt(jenk.style.top)-maxDistance) {
-			x = Math.abs(parseInt(jenk.style.top))-maxDistance;
-			console.log("otherway: "+ x);
+		if (size-y < window.innerWidth) {
+			y = 0;
+		}
+		if (size-x < window.innerHeight) {
+			x = 0;
+		}
+		
+		if (-x < parseInt(jenk.style.top)+(maxDistance*2)) {
+			x = Math.abs(parseInt(jenk.style.top))+(maxDistance*2);
+		} else if (-x > parseInt(jenk.style.top)-(maxDistance*2)) {
+			x = Math.abs(parseInt(jenk.style.top))-(maxDistance*2);
 		}
 		if (-y < parseInt(jenk.style.left)+maxDistance) {
 			y = Math.abs(parseInt(jenk.style.left))+maxDistance;
 		} else if (-y > parseInt(jenk.style.left)-maxDistance) {
 			y = Math.abs(parseInt(jenk.style.left))-maxDistance;
-		}
-		
-		if (x+randomSize < window.innerHeight) {
-			x = window.innerHeight-randomSize;
-		}
-		if (y+randomSize < window.innerHeight) {
-			y = window.innerWidth-randomSize;
 		}
 		
 		jenk.style.top = -x + 'px';

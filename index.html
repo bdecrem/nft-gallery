@@ -27,21 +27,60 @@
     <iframe id="nft" src="./punk.html"></iframe>
 
     <script type="text/javascript">
-        const mins = 2; //Minutes for each NFT to be shown
-        const nfts = ["./mutant.html", "./squiggle.html", "./skullbunny.html", "./jenkclub.html", "./art.html", "./altjames.html", "./nicolas.html", "./punk.html",] //NFT Html
+		const randomize = true;
+		const minutes = 60;
+		const defaultTime = 10 * minutes;
+		
+		//Seconds for each NFT to be shown
+        const seconds = [
+			defaultTime, //"./mutant.html"
+			defaultTime, //./squiggle.html
+			60, //./skullbunny.html
+			defaultTime, //./bonsai.html
+			defaultTime, //./jenkclub.html
+			defaultTime, //./art.html
+			defaultTime,  ///./altjames.html
+			defaultTime, //./nicolas.html
+			60  //./punk.html
+		]; 
+        const nfts = ["./mutant.html", "./squiggle.html", "./skullbunny.html", "./bonsai.html", "./jenkclub.html", "./art.html", "./altjames.html", "./nicolas.html", "./punk.html",] //NFT Html
 
         //------------------------------------------------------------
 
         const nft = document.getElementById('nft');
         let i = 0;
-        const interval = 60 * mins; //Seconds Calc
-        const renew = setInterval(function () {
-            nft.src = nfts[i];
-            if (nfts.length - 1 == i) {
-                i = 0;
-            }
-            else i++;
-        }, interval * 1000);
+		
+		var intervalId;
+		startInterval(seconds[0]);
+		
+		
+		function startInterval(seconds) {
+			// Store the id of the interval so we can clear it later
+			intervalId = setInterval(function() {
+				changeSlide();
+			}, seconds * 1000);
+		}
+	
+		function changeSlide() {
+			let slide = i;
+			
+			if (randomize) {
+				i = nextRandomSlide = Math.floor(Math.random()*nfts.length);
+				nft.src = nfts[i];
+			} else {
+				nft.src = nfts[i];
+				
+				if (nfts.length - 1 == i) {
+					i = 0;
+				}
+				else i++;
+			}
+			// clear the interval
+			clearInterval(intervalId);
+			// and start a new one
+			startInterval(seconds[i]);
+			
+		}
     </script>
 </body>
 

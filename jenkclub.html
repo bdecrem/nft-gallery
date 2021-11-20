@@ -50,8 +50,8 @@
     <img src="./img/jenkclub.png" alt="" id="jenk">
 	<script language="javascript">
 	//Set random timer for movement between 15 and 22	
-	var lowestTime = 15;
-	var highestTime = 22;
+	var lowestTime = 1; 
+	var highestTime = 2;
 	//set minimum size - E.G - 3500px and maximum size E.G. 4000px
 	//The higher the number, the more zoomed in the image will be
 	var minimumSize = 2000;
@@ -85,13 +85,6 @@
 		var x = Math.floor(Math.random()*(size-(window.innerHeight+100)));
 		var y = Math.floor(Math.random()*(size-(window.innerWidth+100)));
 		
-		if (size-y < window.innerWidth) {
-			y = 0;
-		}
-		if (size-x < window.innerHeight) {
-			x = 0;
-		}
-		
 		if (-x < parseInt(jenk.style.top)+(maxDistance*2)) {
 			x = Math.abs(parseInt(jenk.style.top))+(maxDistance*2);
 		} else if (-x > parseInt(jenk.style.top)-(maxDistance*2)) {
@@ -101,6 +94,15 @@
 			y = Math.abs(parseInt(jenk.style.left))+maxDistance;
 		} else if (-y > parseInt(jenk.style.left)-maxDistance) {
 			y = Math.abs(parseInt(jenk.style.left))-maxDistance;
+		}
+		
+		if (size-y < window.innerWidth) {
+			console.log("over");
+			y = 0;
+		}
+		if (size-x < window.innerHeight) {
+			console.log("over");
+			x = 0;
 		}
 		
 		jenk.style.top = -x + 'px';

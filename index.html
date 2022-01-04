@@ -44,9 +44,13 @@
 			defaultTime, //./reva.html
 			defaultTime, //./rozendaal.html
 			defaultTime, //./stargazer.html
+			defaultTime, //./kona.html
+			defaultTime, //./azar.html
+			defaultTime, //./azar2.html
+
 			60  //./punk.html
 		]; 
-        const nfts = ["./mutant.html", "./squiggle.html", "./skullbunny.html", "./bonsai.html", "./jenkclub.html", "./art.html", "./altjames.html", "./nicolas.html", "./reva.html", "./rozendaal.html", "./stargazer.html", "./punk.html",] //NFT Html
+        const nfts = ["./mutant.html", "./squiggle.html", "./skullbunny.html", "./bonsai.html", "./jenkclub.html", "./art.html", "./altjames.html", "./nicolas.html", "./reva.html", "./rozendaal.html", "./stargazer.html", "./azar.html", "./azar2.html", "./kona.html", "./punk.html",] //NFT Html
 
         //------------------------------------------------------------
 
@@ -55,7 +59,7 @@
 		
 		var intervalId;
 		startInterval(seconds[0]);
-		
+		changeSlide();
 		
 		function startInterval(seconds) {
 			// Store the id of the interval so we can clear it later

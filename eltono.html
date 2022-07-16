@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Art Name</title>
+    <style>
+        body {
+            background: white;
+            /* Uncomment below if wanting gradient background */
+            /* background: linear-gradient(306deg, rgba(255, 0, 232, 1) 0%, rgba(0, 121, 255, 1) 100%); */
+            /* background-size: 250% 250%; */
+            /* animation: gradient 5s ease infinite; */
+            /*--------*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        /* Gradient Animation */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        img {
+            width: 105vw;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./img/eltono.png" alt="">
+</body>
+
+</html>

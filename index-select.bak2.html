@@ -28,7 +28,7 @@
 
     <script type="text/javascript">
 		const randomize = true;
-		const minutes = 40;
+		const minutes = 180;
 		const defaultTime = 15 * minutes;
 		
 		//Seconds for each NFT to be shown
@@ -50,7 +50,23 @@
 			defaultTime, //./noggles.html
 
 		]; 
-        const nfts = ["./art.html", "./reva.html", "./rozendaal.html", "./stargazer.html", "./supermental.html", "./james-ronde.html", "./kalis.html", "./sternberg.html", "./mendezmendez.html", "./eltono.html", "./james-tezos.html", "./jeffdavis.html", "./eltono-2.html", "./squiggle-move.html", "./noggles.html"] //NFT Html
+        const nfts = [
+"./squiggle.html", 
+"./art.html", 
+"./reva.html", 
+"./rozendaal.html", 
+"./stargazer.html", 
+"./supermental.html", 
+"./james-ronde.html", 
+"./kalis.html", 
+"./sternberg.html", 
+"./mendezmendez.html",
+"./eltono.html",
+"./james-tezos.html",
+"./jeffdavis.html"
+"./eltono-2.html"
+"./squiggle-move.html"
+"./noggles.html"] //NFT Html
 
         //------------------------------------------------------------
 
@@ -89,13 +105,14 @@
 			
 		}
 		
+		
 		focus();
-        var listener = window.addEventListener('blur', function() {
-            if (document.activeElement === document.getElementById('nft')) {
-                window.location.reload();
-            }
-            window.removeEventListener('blur', listener);
-        });
+		var listener = window.addEventListener('blur', function() {
+			if (document.activeElement === document.getElementById('nft')) {
+				window.location.reload();
+			}
+			window.removeEventListener('blur', listener);
+		});
     </script>
 </body>
 

@@ -5,89 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFT Gallery</title>
+    <title>NFT Art Name</title>
     <style>
         body {
+            background: white;
+            /* Uncomment below if wanting gradient background */
+            /* background: linear-gradient(306deg, rgba(255, 0, 232, 1) 0%, rgba(0, 121, 255, 1) 100%); */
+            /* background-size: 250% 250%; */
+            /* animation: gradient 5s ease infinite; */
+            /*--------*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
             margin: 0;
-            padding: 0;
-            width: 1920px;
-            height: 1080px;
-		overflow: hidden
         }
 
-        iframe {
-            width: 1940px;
-            height: 1100px;
-            outline: none;
-            border: none;
+        /* Gradient Animation */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        img {
+            width: 105vw;
+            object-fit: cover;
+            object-position: center;
         }
     </style>
 </head>
 
 <body>
-    <iframe id="nft" src="./squiggle.html"></iframe>
-
-    <script type="text/javascript">
-		const randomize = true;
-		const minutes = 180;
-		const defaultTime = 15 * minutes;
-		
-		//Seconds for each NFT to be shown
-        const seconds = [
-			defaultTime, //./jeffdavis-action.html
-			defaultTime, //./jeffdavis-action.html
-
-		]; 
-        const nfts = [
-"./jeffdavis-action.html",
-"./jeffdavis-action.html"] //NFT Html
-
-        //------------------------------------------------------------
-
-        const nft = document.getElementById('nft');
-        let i = 0;
-		
-		var intervalId;
-		startInterval(seconds[0]);
-		changeSlide();
-		
-		function startInterval(seconds) {
-			// Store the id of the interval so we can clear it later
-			intervalId = setInterval(function() {
-				changeSlide();
-			}, seconds * 1000);
-		}
-	
-		function changeSlide() {
-			let slide = i;
-			
-			if (randomize) {
-				i = nextRandomSlide = Math.floor(Math.random()*nfts.length);
-				nft.src = nfts[i];
-			} else {
-				nft.src = nfts[i];
-				
-				if (nfts.length - 1 == i) {
-					i = 0;
-				}
-				else i++;
-			}
-			// clear the interval
-			clearInterval(intervalId);
-			// and start a new one
-			startInterval(seconds[i]);
-			
-		}
-		
-		
-		focus();
-		var listener = window.addEventListener('blur', function() {
-			if (document.activeElement === document.getElementById('nft')) {
-				window.location.reload();
-			}
-			window.removeEventListener('blur', listener);
-		});
-    </script>
+    <img src="./img/zamboni.png" alt="">
 </body>
 
 </html>
